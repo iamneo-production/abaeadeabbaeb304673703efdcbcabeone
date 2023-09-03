@@ -2,7 +2,7 @@
 let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 let gameActive=true;
-let result = document.querySelector('.result');
+let resultText = document.querySelector('.result');
 let btns = document.querySelectorAll('.btn');
 let resetButton=document.getElementById('reset-button');
 let winningCombinations = [
@@ -53,16 +53,7 @@ const checkWinner=()=>{
     return null;
 };
 
-    /*
-    **Part 2: Reset Function (Add your code here)**
 
-    1. Implement a new function that resets the game to its initial state.
-    2. Ensure the 'cells', 'btns', and 'currentPlayer' variables are reset.
-    3. Update the 'result' element to indicate the current player's turn.
-    4. Re-enable all buttons for a new game.
-    */
-
-// Function to reset the game
 const resetGame = () => {
     buttons.forEach((button,index)=>{
         button.value='';
@@ -71,7 +62,9 @@ const resetGame = () => {
 
     });
     currentPlayer='X';
-    resultText.textContent='Player X's Turn'
+    resultText.textContent='Player Xs Turn';
+    resetButton.disabled=true;
+    gameActive=true;
     
 };
 
