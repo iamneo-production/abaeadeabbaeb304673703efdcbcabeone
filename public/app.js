@@ -1,9 +1,11 @@
 // Initial game state
-let cells = ['', '', '', '', '', '', '', '', ''];
+let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
+let gameActive=true;
 let result = document.querySelector('.result');
 let btns = document.querySelectorAll('.btn');
-let conditions = [
+let resetButton=document.getElementById('reset-button');
+let winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -16,24 +18,12 @@ let conditions = [
 
 // Function to handle player moves
 const ticTacToe = (element, index) => {
-    // Your game logic here
+    if(board[index]==='' && gameActive){
+        board[index]=
+    }
+    
 
-    /*
-    **Part 1: Winning Conditions (Add your code here)**
-
-    1. Implement the logic to check for winning conditions using the 'conditions' array.
-    2. Display a winning message in the 'result' element when a player wins.
-    3. Disable all buttons after a win.
-    */
-
-    // Your code to update the game state and check for a win
-    // ...
-
-    // Your code to display the current player's turn
-    // ...
-
-    // Your code to handle button and cell interactions
-    // ...
+   
 };
 
     /*
