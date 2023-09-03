@@ -19,11 +19,38 @@ let winningCombinations = [
 // Function to handle player moves
 const ticTacToe = (element, index) => {
     if(board[index]==='' && gameActive){
-        board[index]=
+        board[index]=currentPlayer;
+        element.value=currentPlayer;
+        currentPlayer=currentPlayer==='X'? '0':'X';
+        resultText.textContent='Player ${currentPlayer}s Turn';
+        const winner=checkWinner();
+        if(winner==='draw'){
+            resultText.TextContent='Its a draw!';
+            resetGame();
+        }
+        else if(winner){
+            resultText.textContent='Player ${winner} Wins';
+            resetGame();
+        }
     }
     
 
    
+};
+const checkWinner=()=>{
+    for(const combination of winningCombinations){
+        const[a,b,c]=combination;
+        if(board[a] && board[a]===board[b] && board[a]===board[c]){
+            gameActive=false;
+            return board[a];
+        }
+        
+    }
+    if(!board.includes('')){
+        gameActive=false;
+        return 'draw';
+    }
+    return null;
 };
 
     /*
@@ -37,14 +64,15 @@ const ticTacToe = (element, index) => {
 
 // Function to reset the game
 const resetGame = () => {
-    // Your code to reset the game state
-    // ...
+    buttons.forEach((button,index)=>{
+        button.value='';
+        board[index]='';
+        button.disabled=false;
 
-    // Your code to update the 'result' element
-    // ...
-
-    // Your code to re-enable buttons
-    // ...
+    });
+    currentPlayer='X';
+    resultText.textContent='Player X's Turn'
+    
 };
 
 btns.forEach((btn, i) => {
